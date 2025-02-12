@@ -1,0 +1,82 @@
+Ejemplos para probar en ghci
+
+buscar:
+ghci> buscar [1, 2, 3, 4, 5] 3  -- True (3 está en la lista)
+
+sumar_lista:
+ghci> sumar_lista [1, 2, 3, 4, 5]  -- 15 (1 + 2 + 3 + 4 + 5)
+
+sumar_ordinario y sumar_cola:
+
+ghci> :set +s
+ghci> sumar_ordinario [1..1000000]
+500000500000
+(0.69 secs, 226,539,280 bytes)
+ghci> sumar_cola [1..1000000] 
+500000500000
+(0.88 secs, 225,692,984 bytes)
+
+filterB:
+ghci> filterB even [1,2,3,4,5,6,7,8] 
+[2,4,6,8]
+
+ghci> filterB (>3) [1,2,3,4,5]
+[4,5]
+
+mapear:
+ghci> mapear (*2) [1,2,3,4]
+[2,4,6,8]
+
+
+ghci> mapear (+1) [0,1,2,3,4]
+[1,2,3,4,5]
+
+
+mapear_:
+ghci> mapear_ (*3) [1,2,3,4]
+[3,6,9,12]
+
+
+ghci> let tree = Node 1 (Node 2 (Node 4 Empty Empty) (Node 5 Empty Empty)) (Node 3 Empty Empty)
+ghci> leafSum tree
+12
+
+
+        5
+       / \
+      3   8
+     / \   \
+    1   4   10
+ghci> let arbolito = Node 5 (Node 3 (Node 1 Empty Empty) (Node 4 Empty Empty)) (Node 8 Empty (Node 10 Empty Empty))
+
+preorder:
+
+ghci> preorder arbolito
+[5,3,1,4,8,10]
+
+buscar_tree:
+
+ghci> buscar_tree arbolito 4
+True
+
+hojas:
+ghci> hojas arbolito
+3
+
+isConnecte:
+ghci> isConnected connectedGraph      -- True
+ghci> isConnected disconnectedGraph   -- False
+
+isTree:
+graph1 :: Graph
+graph1 = [(1, [2]), (2, [1, 3]), (3, [2])]  -- Un árbol con 3 vértices y 2 aristas
+ghci> isTree graph1   -- True: Es un árbol
+
+leafSum:
+tree1 :: Tree Int
+tree1 = Node 5 (Node 3 Empty Empty) (Node 7 Empty Empty)
+ghci> leafSum tree1   -- 10 (3 + 7)
+
+
+
+
